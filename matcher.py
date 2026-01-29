@@ -1,21 +1,7 @@
 from typing import List
 from time import time
 
-def timer(func):
-    def wrapper(*args, **kwargs):
-        beg = time()
-        x = func(*args, **kwargs)
-        end = time()
-        print(f"Time: {(end-beg)*10**3} ms")
-        return x
-    return wrapper
-
-@timer
-def gsmatch(l:List[List[int]])->List[List[int]]:
-    n = l[0][0]
-    h_prefs = [l[i+1] for i in range(n)]
-    s_prefs = [l[i+n+1] for i in range(n)]
-    
+def gsmatch(n, h_prefs, s_prefs):
     s_rank = [[0]*n for _ in range(n)]
     
     for s in range(n):
